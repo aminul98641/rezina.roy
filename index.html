@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for Rezina ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --pink: #ff4f87;
+  --light: #ffd9e5;
+  --white: #fff8fb;
+  --gold: #ffe0a3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 50% 0%, #64203e 0%, transparent 55%),
+    linear-gradient(150deg, #160b17, #291020 55%, #120b19);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spark {
+  position: absolute;
+  bottom: -30px;
+  color: #ff8eae;
+  opacity: 0;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 0 8px #ff4f87);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(.7);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-115vh) rotate(180deg) scale(1.3);
+    opacity: 0;
+  }
+}
+
+.screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 19px;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+  animation: screenIn .8s ease both;
+}
+
+@keyframes screenIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  padding: 35px 23px;
+  border: 1px solid #ffffff20;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #ffffff0c, #ffffff04);
+  box-shadow: 0 20px 70px #00000030;
+  backdrop-filter: blur(14px);
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(33px, 8vw, 48px);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(27px, 7vw, 36px);
+  line-height: 1.35;
+}
+
+p {
+  color: #f6dce8;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.subtitle {
+  margin-top: 17px;
+  font-size: 14px;
+}
+
+.glow {
+  color: var(--pink);
+  text-shadow: 0 0 25px #ff4f8760;
+}
+
+.heart-orb {
+  width: 108px;
+  height: 108px;
+  margin: 0 auto 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ff8eae60;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff4f872c, #ff4f8705);
+  box-shadow: 0 0 55px #ff4f8720, inset 0 0 25px #ff4f8710;
+  animation: heartbeat 2s infinite;
+}
+
+.heart-orb span {
+  font-size: 47px;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.08); }
+  24% { transform: scale(1); }
+  36% { transform: scale(1.05); }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+  padding: 13px 25px;
+  margin-top: 26px;
+  border: 1px solid #ffffff20;
+  border-radius: 50px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(110deg, #ff397a, #c92366);
+  box-shadow: 0 8px 30px #ff397a35;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px #ff397a50;
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+.btn.secondary {
+  background: #ffffff0b;
+  box-shadow: none;
+}
+
+.btn.yes {
+  background: linear-gradient(110deg, #ff5791, #e41f69);
+}
+
+.btn.no {
+  background: #ffffff08;
+  box-shadow: none;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.step-label {
+  margin-top: 25px;
+  color: #e6a5be;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.name {
+  margin: 19px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(35px, 9vw, 49px);
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(100deg, #fff0c7, #ff80ac, #fff1cf);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.gift {
+  font-size: 82px;
+  display: inline-block;
+  margin: 10px 0 20px;
+  filter: drop-shadow(0 0 20px #ff4f8740);
+  animation: giftBounce 2s infinite;
+}
+
+@keyframes giftBounce {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-9px) rotate(-4deg); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.message-line {
+  margin: 15px 0;
+  animation: lineIn .9s ease both;
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter {
+  margin-top: 24px;
+  padding: 23px 17px;
+  border-radius: 18px;
+  border: 1px solid #ff94b62b;
+  background: #ff7ba10b;
+}
+
+.letter p {
+  font-size: 15px;
+}
+
+.final-heart {
+  margin: 15px 0;
+  font-size: 48px;
+  animation: heartbeat 1.7s infinite;
+}
+
+.footer {
+  margin-top: 28px;
+  font-size: 10px;
+  color: #c7a0b3;
+  letter-spacing: 2px;
+}
+
+.response {
+  margin-top: 18px;
+  color: var(--gold);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 28px 17px;
+  }
+
+  .btn {
+    padding: 12px 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+<canvas id="confetti"></canvas>
+
+<!-- STEP 1 -->
+<section class="screen active" id="s1">
+  <div class="card">
+
+    <div class="eyebrow">A little moment, just for you</div>
+
+    <div class="heart-orb">
+      <span>💗</span>
+    </div>
+
+    <h1>
+      Hey,<br>
+      <span class="glow">Beautiful.</span> 😍
+    </h1>
+
+    <p class="subtitle">
+      Some surprises are too special<br>
+      to be told in an ordinary way.
+    </p>
+
+    <button class="btn" onclick="go(2)">
+      Open your surprise <span>♡</span>
+    </button>
+
+    <div class="step-label">01 — SOMETHING SPECIAL</div>
+  </div>
+</section>
+
+<!-- STEP 2 -->
+<section class="screen" id="s2">
+  <div class="card">
+
+    <div class="eyebrow">Welcome to Aminul Tech World</div>
+
+    <p>Today, this little world is all about...</p>
+
+    <div class="name">Rezina<br>Parbin ✨</div>
+
+    <div class="divider"></div>
+
+    <p>
+      One special name.<br>
+      One little surprise.<br>
+      And a message from the heart. 💌
+    </p>
+
+    <button class="btn" onclick="go(3)">
+      There's more for you <span>→</span>
+    </button>
+
+    <div class="step-label">02 — MADE JUST FOR YOU</div>
+  </div>
+</section>
+
+<!-- STEP 3 -->
+<section class="screen" id="s3">
+  <div class="card">
+
+    <div class="eyebrow">Before we continue...</div>
+
+    <div class="gift">🎁</div>
+
+    <h2>A little surprise<br>is waiting for you.</h2>
+
+    <p class="subtitle">
+      Would you like to discover<br>
+      what's inside? 🙈
+    </p>
+
+    <div class="button-row">
+      <button class="btn no" onclick="sayNo()">
+        Not now 😅
+      </button>
+
+      <button class="btn yes" onclick="celebrate()">
+        Yes, show me 💖
+      </button>
+    </div>
+
+    <p id="noText" class="response hidden">
+      That's okay. 😊<br>
+      The surprise will be right here<br>
+      whenever you're ready. 🌷
+      <br>
+      <button class="btn secondary" onclick="go(2)">
+        Go back ↶
+      </button>
+    </p>
+
+    <div class="step-label">03 — A LITTLE MYSTERY</div>
+  </div>
+</section>
+
+<!-- STEP 4 -->
+<section class="screen" id="s4">
+  <div class="card">
+
+    <div class="eyebrow">A little celebration</div>
+
+    <div class="heart-orb">
+      <span>💝</span>
+    </div>
+
+    <h1 class="glow">Yay! ✨</h1>
+
+    <p class="subtitle">
+      I'm glad you're here, Rezina.<br>
+      There's something I've wanted<br>
+      to share with you in my own little way.
+    </p>
+
+    <button class="btn" onclick="go(5)">
+      Read my message 💌
+    </button>
+
+    <div class="step-label">04 — FROM MY HEART</div>
+  </div>
+</section>
+
+<!-- STEP 5: UPDATED PROPOSAL MESSAGE -->
+<section class="screen" id="s5">
+  <div class="card">
+
+    <div class="eyebrow">A message for Rezina</div>
+
+    <h2 class="glow">Shhh... 🤫💌</h2>
+
+    <p style="margin-top:13px">
+      Ek secret bataun? 🙈
+    </p>
+
+    <div class="letter">
+
+      <p class="message-line" style="animation-delay:.2s">
+        Meri life ki ek special person ho tum... 🥹❤️
+      </p>
+
+      <p class="message-line" style="animation-delay:.8s">
+        Bas abhi tak tumhe bataya nahi tha. 🫣💗
+      </p>
+
+      <div class="divider"></div>
+
+      <!-- NEW PERSONAL MESSAGE -->
+
+      <p class="message-line" style="animation-delay:1.4s">
+        Main kabhi-kabhi bohot akela mehsoos karta hoon... 🥹❤️
+      </p>
+
+      <p class="message-line" style="animation-delay:2s">
+        Kisi aise insaan ki kami mehsoos hoti hai,
+        jisse dil ki baatein bina kisi jhijhak ke
+        share kar sakoon. 💌
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="message-line" style="animation-delay:2.6s">
+        Mujhe sirf time pass karne ke liye
+        kisi ka saath nahi chahiye... 🫶🏻
+      </p>
+
+      <p class="message-line" style="animation-delay:3.2s">
+        Main ek aisa connection chahta hoon,
+        jahan feelings sachchi hon aur
+        ek-doosre ki care dil se ki jaaye. 🥹💗
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="message-line" style="animation-delay:3.8s">
+        <strong style="color:#ff91b5">
+          I really like you, Rezina. ❤️
+        </strong>
+      </p>
+
+    </div>
+
+    <div class="final-heart">💗</div>
+
+    <p>
+      Ab tumhari baari... 💌
+    </p>
+
+    <button class="btn" onclick="go(6)">
+      Tell me what you feel 💞
+    </button>
+
+    <div class="step-label">05 — MY LITTLE CONFESSION</div>
+  </div>
+</section>
+
+<!-- STEP 6 -->
+<section class="screen" id="s6">
+  <div class="card">
+
+    <div class="eyebrow">Your feelings matter</div>
+
+    <h2>So, Rezina... 💗</h2>
+
+    <p class="subtitle">
+      Would you like to give this connection<br>
+      a chance to grow? 🌷
+    </p>
+
+    <div class="button-row">
+      <button class="btn yes" onclick="answerYes()">
+        Yes, let's see 💖
+      </button>
+
+      <button class="btn no" onclick="answerNo()">
+        I need time 🌸
+      </button>
+    </div>
+
+    <p id="answerText" class="response hidden"></p>
+
+    <div class="footer">MADE WITH ❤️ BY AMINUL</div>
+  </div>
+</section>
+
+<script>
+const screens = document.querySelectorAll('.screen');
+
+function go(number) {
+  screens.forEach(s => s.classList.remove('active'));
+
+  document.getElementById('s' + number)
+    .classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+function sayNo() {
+  document.getElementById('noText')
+    .classList.remove('hidden');
+}
+
+function celebrate() {
+  go(4);
+  launchConfetti();
+}
+
+function answerYes() {
+  const el = document.getElementById('answerText');
+
+  el.innerHTML =
+    'Thank you for sharing your feelings with me! 🥹💖<br>' +
+    'Let’s take things one beautiful step at a time. 🌷';
+
+  el.classList.remove('hidden');
+  launchConfetti();
+}
+
+function answerNo() {
+  const el = document.getElementById('answerText');
+
+  el.innerHTML =
+    'It’s completely okay. ❤️<br>' +
+    'Thank you for being honest with me.<br>' +
+    'Your feelings and your choice matter. 🌸';
+
+  el.classList.remove('hidden');
+}
+
+// Floating background particles
+function createParticle() {
+  const el = document.createElement('span');
+  el.className = 'spark';
+
+  const symbols = ['♡', '♥', '✦', '✨', '💗'];
+
+  el.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (12 + Math.random() * 18) + 'px';
+  el.style.animationDuration = (6 + Math.random() * 7) + 's';
+
+  document.getElementById('particles').appendChild(el);
+
+  setTimeout(() => el.remove(), 14000);
+}
+
+setInterval(createParticle, 450);
+
+// Confetti animation
+let confettiFrame = null;
+
+function launchConfetti() {
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+
+  if (confettiFrame) {
+    cancelAnimationFrame(confettiFrame);
+  }
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const pieces = [];
+
+  for (let i = 0; i < 110; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -Math.random() * canvas.height,
+      size: 3 + Math.random() * 5,
+      speed: 2 + Math.random() * 4,
+      drift: (Math.random() - 0.5) * 2,
+      color: [
+        '#ff4f87',
+        '#ffe0a3',
+        '#ffffff',
+        '#ff9ebd'
+      ][Math.floor(Math.random() * 4)]
+    });
+  }
+
+  let frame = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach(p => {
+      p.y += p.speed;
+      p.x += p.drift;
+
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size * 1.6);
+    });
+
+    frame++;
+
+    if (frame < 170) {
+      confettiFrame = requestAnimationFrame(draw);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiFrame = null;
+    }
+  }
+
+  draw();
+}
+
+window.addEventListener('resize', () => {
+  const canvas = document.getElementById('confetti');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
